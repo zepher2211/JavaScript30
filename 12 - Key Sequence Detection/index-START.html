@@ -7,6 +7,21 @@
 </head>
 <body>
 <script>
+  let arr = []
+  const secretCode = "arrowup arrowup arrowdown arrowdown b a enter"
+  window.addEventListener('keyup', (e) => {
+    console.log(e.key)
+    arr.push(e.key);
+    if(arr.join(" ").toLowerCase() === secretCode) {
+      cornify_add();
+      arr = []
+    } 
+
+    if(arr.length > secretCode.split(" ").length){
+      console.log("You got the code wrong! Try again.")
+      arr = []
+    }
+  });
 </script>
 </body>
 </html>
