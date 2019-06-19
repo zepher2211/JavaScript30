@@ -96,6 +96,29 @@
   </div>
 
 <script>
+  let lastChecked = 0
+  let multiSelect = false;
+  const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
+
+  checkboxes.forEach((e, i) => {
+    e.addEventListener('change', () => {
+      if(multiSelect === true){
+        for(j = i - 1; j > lastChecked; j--){
+          checkboxes[j].checked = e.checked
+        }
+      } else {
+        lastChecked = i
+      }
+    })
+  })
+
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Shift') multiSelect = true
+  })
+
+  document.addEventListener('keyup', (e) => {
+    if(e.key === 'Shift') multiSelect = false
+  })
 </script>
 </body>
 </html>
